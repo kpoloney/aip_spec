@@ -65,11 +65,24 @@ Technical information will be represented in FITS metadata.
 
 # 3. Workflow
 
+The AIP will be created as soon as possible after an object has been deposited. 
+
+1. The AIP creator will create a Bag from the digital object. This can either be created directly from the repository 
+ (i.e., with [Islandora bagger](https://github.com/mjordan/islandora_bagger)) or 
+created from the object itself using a tool such as [Bagger](https://github.com/LibraryOfCongress/bagger) or [SFU Moveit](https://github.com/axfelix/moveit-electron).
+2. Confirm the Bag contains the expected contents and structure (detailed in [2. AIP Contents](#2-aip-contents). 
+3. Enter the `BagIt-Profile-Identifier` in the `bag-info.txt` file. The `BagIt-Profile-Identifier` is the URI of the 
+BagIt profile JSON file.
+4. Run validation steps detailed in the [Validation](#4-validation) 
+section. 
+
 # 4. Validation
 
-## 4.1 Checksums
+## 4.1 BagIt validator
 
 ## 4.2 Bag profile validator
+
+## 4.3 Metadata validation (?)
 
 # 5. Other considerations
 The following section includes outstanding issues or topics for further consideration in this specification's 
@@ -101,5 +114,10 @@ flexible compared to DOIs. The disadvantage is that their management would requi
 to manage and update the identifiers. 
 
 ## 5.2 Structural metadata
+
+Including metadata like METS could provide important information about object relationships. This could be especially 
+useful for paged objects like newspapers. In Islandora, relationships are represented with platform-specific terms which 
+require the inclusion of a taxonomy document to interpret those relationships. METS either instead of or in addition to 
+a taxonomy description could make object relationships and structure more apparent to future users.
 
 ## 5.3 Taxonomy management
