@@ -52,16 +52,48 @@ contextual information.
 
 ### Descriptive
 
-Descriptive metadata must be represented following the Dublin Core schema. In Islandora, Dublin Core metadata can be exported using 
-[Islandora bagger](https://github.com/mjordan/islandora_bagger).
+Descriptive metadata must be represented following the Dublin Core schema. In Islandora repositories, Dublin Core 
+metadata can be exported using [Islandora bagger](https://github.com/mjordan/islandora_bagger).
 
 The Dublin Core metadata file is identified by the "_dc" appended to the filename.
 
 ### Technical
 
-Technical information will be represented in FITS metadata. 
+Technical information will be represented in FITS metadata. In Islandora repositories, FITS metadata can be exported 
+using [Islandora bagger](https://github.com/mjordan/islandora_bagger).
+
+
+FITS metadata files should follow the naming convention "identifier-FITS.xml"
+
+
+### Structural
+Information about parent/child relationships between objects as well as arrangement for ordered content must be 
+captured when relevant. When referencing an external object, use its persistent identifier rather than a system-
+specific identifier.
+
+Details specific to SFU repositories are included below.
+
+#### SFU Summit
+Relationships are represented in the media use field in SFU Summit. To extract this information from Summit:
+1. Use Islandora Bagger with the AddMedia plugin to include `media.json` and `media_use_summary.tsv` when creating a Bag.
+2. In `media.json` the `field_media_use` object identifies the relationships by their taxonomy id. Using the URL in 
+`field_media_use`, lookup the JSON metadata for the taxonomy id and confirm that there is an external URI for the term.
+This should match the URI in the `media_use_summary.tsv` file.
+3. 
+
+#### SFU Special Collections
 
 ## 2.3 Taxonomies
+Whenever possible, include either a URI pointing to taxonomy terms, or define them within the metadata. 
+
+Do not leave platform-specific taxonomy identifiers in the metadata without either translating them into terms or providing a 
+URI containing a definition. 
+
+### Islandora identifiers
+Media/use
+Memberof
+taxonomy
+
 
 # 3. Workflow
 
@@ -70,7 +102,7 @@ The AIP will be created as soon as possible after an object has been deposited.
 1. The AIP creator will create a Bag from the digital object. This can either be created directly from the repository 
  (i.e., with [Islandora bagger](https://github.com/mjordan/islandora_bagger)) or 
 created from the object itself using a tool such as [Bagger](https://github.com/LibraryOfCongress/bagger) or [SFU Moveit](https://github.com/axfelix/moveit-electron).
-2. Confirm the Bag contains the expected contents and structure (detailed in [2. AIP Contents](#2-aip-contents). 
+2. Confirm the Bag contains the expected contents and structure detailed in [2. AIP Contents](#2-aip-contents). 
 3. Enter the `BagIt-Profile-Identifier` in the `bag-info.txt` file. The `BagIt-Profile-Identifier` is the URI of the 
 BagIt profile JSON file.
 4. Run validation steps detailed in the [Validation](#4-validation) 
@@ -119,5 +151,8 @@ Including metadata like METS could provide important information about object re
 useful for paged objects like newspapers. In Islandora, relationships are represented with platform-specific terms which 
 require the inclusion of a taxonomy document to interpret those relationships. METS either instead of or in addition to 
 a taxonomy description could make object relationships and structure more apparent to future users.
+
+### Islandora relationships
+
 
 ## 5.3 Taxonomy management
