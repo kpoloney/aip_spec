@@ -68,31 +68,56 @@ FITS metadata files should follow the naming convention "identifier-FITS.xml"
 
 ### Structural
 Information about parent/child relationships between objects as well as arrangement for ordered content must be 
-captured when relevant. When referencing an external object, use its persistent identifier rather than a system-
+captured when relevant. When referencing an external object, use its persistent identifier (i.e., ARK) rather than a system-
 specific identifier.
 
 Details specific to SFU repositories are included below.
 
 #### SFU Summit
-Relationships are represented in the media use field in SFU Summit. To extract this information from Summit:
+Relationships are represented in the media use and member fields in SFU Summit. To obtain this information from Summit:
 1. Use Islandora Bagger with the AddMedia plugin to include `media.json` and `media_use_summary.tsv` when creating a Bag.
-2. In `media.json` the `field_media_use` object identifies the relationships by their taxonomy id. Using the URL in 
-`field_media_use`, lookup the JSON metadata for the taxonomy id and confirm that there is an external URI for the term.
-This should match the URI in the `media_use_summary.tsv` file.
-3. 
+2. In `node.json`, the `field_member_of` item contains the Islandora identifiers for the parent object. 
+3. In `media.json`, the relationships between files are represented by the `field_media_use` items. For Summit, any 
+supplemental files (e.g., datasets) associated with an object (e.g., a thesis) will be represented here. To look up the 
+relationship, a secondary lookup by taxonomy term id is needed. 
+4. Information about individual taxonomy ids can be queried in Islandora using the url under `field_media_use` in 
+`media.json`. In the taxonomy json metadata, the `field_external_uri` item gives an external uri to a definition of
+the taxonomy term.  
+5. Create a METS file which includes the identifiers for the bagged object, its related object(s), and the taxonomy 
+external uri.
 
-#### SFU Special Collections
+Notes: 
+* Potentially the object's ARK will be the SFU NAAN with the Drupal UUID appended. This can be extracted from the  
+`node.json` for the object and its parent. We can verify whether an object and its parent have ARKs already and mint 
+them if they don't.
+* The METS file should be minimal and only needs the structMap section. Descriptive metadata will be captured in the DC.
+* These steps will be automated; exact method TBD.
 
 ## 2.3 Taxonomies
 Whenever possible, include either a URI pointing to taxonomy terms, or define them within the metadata. 
 
-Do not leave platform-specific taxonomy identifiers in the metadata without either translating them into terms or providing a 
-URI containing a definition. 
+Do not leave platform-specific taxonomy identifiers in the metadata without either translating them into terms or 
+providing a URI containing a definition. 
 
 ### Islandora identifiers
-Media/use
-Memberof
-taxonomy
+Islandora metadata contains platform-specific identifiers which point to digital objects, their parent objects, and 
+object relationships. The following are relevant identifiers in SFU's Islandora repositories and can be extracted using 
+Islandora Bagger.
+
+In `node.json`:
+* `uuid`: This field is the Islandora identifier for the object. It should be translated to the object's ARK, or an ARK 
+should be created if one doesn't already exist. 
+* `field_member_of`: The `target_uuid` is the Islandora identifier for the parent object.
+
+In `media.json`:
+* `field_media_of`: The `target_uuid` here is the identifier of the main object. It should be the same as the `uuid` in `node.json`.
+* `field_media_use`: This field contains the taxonomy identifiers for the term describing the file's relationship to the 
+main object. 
+
+Secondary lookup `taxonomy.json` (using the url /taxonomy/term/xx?_format=json where "xx" is the `target_id` in 
+`field_media_use`):
+* `field_external_uri`: Contains `url` which directs to the description of the taxonomy term.
+* `name` and `description`: The `value`s are the taxonomy term and its description in human-readable text. 
 
 
 # 3. Workflow
@@ -173,8 +198,3 @@ Including metadata like METS could provide important information about object re
 useful for paged objects like newspapers. In Islandora, relationships are represented with platform-specific terms which 
 require the inclusion of a taxonomy document to interpret those relationships. METS either instead of or in addition to 
 a taxonomy description could make object relationships and structure more apparent to future users.
-
-### Islandora relationships
-
-
-## 5.3 Taxonomy management
