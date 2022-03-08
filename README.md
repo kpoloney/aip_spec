@@ -74,27 +74,31 @@ specific identifier.
 Details specific to SFU repositories are included below.
 
 #### SFU Summit
-Relationships are represented in the media use and member fields in SFU Summit. To obtain this information from Summit:
-1. Use Islandora Bagger with the AddMedia plugin to include `media.json` and `media_use_summary.tsv` when creating a Bag.
-2. In `node.json`, the `field_member_of` item contains the Islandora identifiers for the parent object. 
-3. In `media.json`, the relationships between files are represented by the `field_media_use` items. For Summit, any 
-supplemental files (e.g., datasets) associated with an object (e.g., a thesis) will be represented here. To look up the 
-relationship, a secondary lookup by taxonomy term id is needed. 
-4. Information about individual taxonomy ids can be queried in Islandora using the url under `field_media_use` in 
-`media.json`. In the taxonomy json metadata, the `field_external_uri` item gives an external uri to a definition of
-the taxonomy term.  
-5. Create a METS file which includes the identifiers for the bagged object, its related object(s), and the taxonomy 
-external uri.
 
-Notes: 
-* Potentially the object's ARK will be the SFU NAAN with the Drupal UUID appended. This can be extracted from the  
-`node.json` for the object and its parent. We can verify whether an object and its parent have ARKs already and mint 
-them if they don't.
+Relationships are represented in the media use and member fields in SFU Summit. To obtain this information from Summit:
+
+1. Use Islandora Bagger with the AddMedia plugin to include `media.json` and `media_use_summary.tsv` when creating a
+   Bag.
+2. In `node.json`, the `"field_member_of" : [{"target_uuid":}]` item contains the Islandora identifier for the parent
+   object.
+3. To get information about the object's child items, query the `members.json` metadata from the node (e.g. using the
+   url format `node/0000/members?_format=json`, where the 000s are the Islandora node id number).
+4. In `members.json`, the Islandora identifier and uuids are listed for the original node's child objects. The
+   information can be found in the `"uuid" : [{"value":}]` item.
+5. Create a METS file to represent the hierarchy of the object and its parent and child objects. Translate the Islandora
+   UUIDs to the object's persistent identifier (e.g. ARK) or assign a persistent identifier if the object doesn't have
+   one.
+
+Notes:
+
+* Potentially the object's ARK will be the SFU NAAN with the Drupal UUID appended. The UUIDs can be extracted from  
+  `node.json` for the object and its parent and from `members.json` for the object's children. We can verify whether an
+  object and its parent have ARKs already and mint them if they don't.
 * The METS file should be minimal and only needs the structMap section. Descriptive metadata will be captured in the DC.
 * These steps will be automated; exact method TBD.
 
 ## 2.3 Taxonomies
-Whenever possible, include either a URI pointing to taxonomy terms, or define them within the metadata. 
+Whenever possible, include either a URI pointing to taxonomy terms used (e.g. from [PCDM](https://pcdm.org/)), or define them within the metadata. 
 
 Do not leave platform-specific taxonomy identifiers in the metadata without either translating them into terms or 
 providing a URI containing a definition. 
@@ -109,16 +113,23 @@ In `node.json`:
 should be created if one doesn't already exist. 
 * `field_member_of`: The `target_uuid` is the Islandora identifier for the parent object.
 
-In `media.json`:
-* `field_media_of`: The `target_uuid` here is the identifier of the main object. It should be the same as the `uuid` in `node.json`.
-* `field_media_use`: This field contains the taxonomy identifiers for the term describing the file's relationship to the 
-main object. 
+In `members.json`:
 
-Secondary lookup `taxonomy.json` (using the url /taxonomy/term/xx?_format=json where "xx" is the `target_id` in 
+* `uuid`: The value is the Islandora identifier for the object. There will be a UUID for each child object listed in the
+  file.
+
+`media.json` contains information about media files connected to the original object (e.g. thumbnails, extracted text):
+
+* `field_media_of`: The `target_uuid` here is the identifier of the main object. It should be the same as the `uuid`
+  in `node.json`.
+* `field_media_use`: This field contains the taxonomy identifiers for the term describing the file's relationship to the
+  main object. The `url` item here is used to look up the taxonomy metadata.
+
+Secondary lookup `taxonomy.json` (using the url `/taxonomy/term/xx?_format=json` where "xx" is the `target_id` in
 `field_media_use`):
-* `field_external_uri`: Contains `url` which directs to the description of the taxonomy term.
-* `name` and `description`: The `value`s are the taxonomy term and its description in human-readable text. 
 
+* `field_external_uri`: Contains `url` which directs to the description of the taxonomy term.
+* `name` and `description`: These values are the taxonomy term and its description in human-readable text.
 
 # 3. Workflow
 
