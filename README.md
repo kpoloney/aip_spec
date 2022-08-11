@@ -26,7 +26,7 @@ aip-575835bd-15b2-4ee6-b5ba-66db8c492d92
       └── DigitalObjectFilename
       └── metadata
          ├── DigitalObject_DMD.xml
-         └── DigitalObject_FITS.xml
+         └── DigitalObject_TMD.xml
    ├── bag-info.txt
    ├── bagit.txt
    ├── manifest-sha1.txt
@@ -39,8 +39,7 @@ The `bag-info.txt` file must include the `BagIt-Profile-Identifier` tag in order
 
 The data folder will contain the digital object and its metadata. The data directory will contain the object itself
 saved in its original format with its original file name and a metadata subfolder. The metadata subfolder will contain,
-at minimum, a file containing descriptive metadata, and a file containing FITS metadata. These should be identified in
-the file name with the suffix "_DMD" for descriptive metadata and "_FITS" for FITS metadata.
+at minimum, a file containing descriptive metadata, and a file containing technical metadata. 
 
 ## 2.2 Metadata
 
@@ -53,6 +52,20 @@ Metadata files should be saved as either a plain text file (.txt) or an XML file
 Metadata files that are not part of the original object (e.g., files created automatically on transfer or by a librarian
 as opposed to a README file connected to a research dataset) should be saved in the "metadata" subfolder within the data
 directory.
+
+Examples of different levels of metadata completeness are:
+
+| Level         | Descriptive     | Technical    | Structural | Other     |
+| :---          |    :----:       |    :---:     | :---:      |  ---:     |
+| 1 (Minimum)   | DCMI Kernal/ERC | FITS         |       --   |    --     |
+| 2 (Acceptable)|  ERC plus non-standardized descriptive metadata    | FITS         | Platform-specific (e.g. node.json)|         |
+| 3 (Preferred) |  Dublin Core    | FITS         |   METS     |  e.g. Additional repository-specific or preservation metadata|
+
+The preferred level includes as much metadata as necessary to understand the object, its context of creation, related
+objects, and its technical requirements. While not required, additional metadata may be included if it would provide
+information that may be relevant to the object's preservation. If it is not possible to include more detailed
+metadata, the minimum level is still compliant with this specification. ERC metadata is required to mint an ARK, and 
+therefore cannot be excluded.
 
 ### Descriptive
 
@@ -68,15 +81,20 @@ where: a location or system-oriented identifier (required)
 ```
 
 More in-depth descriptive metadata may be included. Descriptive metadata should follow a standardized schema
-(preferably Dublin Core). 
+(preferably Dublin Core), but if it is not possible to do so, non-standardized metadata can be included as long as the
+Kernal metadata elements are also present in the AIP.
 
 The descriptive metadata file is identified by the "_DMD" appended to the filename.
 
 ### Technical
 
-Technical information will be represented by [FITS metadata](https://projects.iq.harvard.edu/fits/home).
+Technical information should be represented by [FITS metadata](https://projects.iq.harvard.edu/fits/home).
 
-FITS metadata files should follow the naming convention "ObjectName_FITS.xml"
+If, for some reason, the FITS tool cannot be used, technical information should be extracted from digital objects 
+based on their format (audio, video, image, text, etc.). For a list of possible technical metadata fields, see the 
+[FITS metadata documentation](https://projects.iq.harvard.edu/fits/fits-xml#metadata)
+
+The technical metadata file is identified by "_TMD" appended to the filename.
 
 ### Structural
 
