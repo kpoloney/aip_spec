@@ -25,8 +25,7 @@ aip-575835bd-15b2-4ee6-b5ba-66db8c492d92
    ├── data
       └── DigitalObjectFilename
       └── metadata
-         ├── DigitalObject_DMD.xml
-         └── DigitalObject_TMD.xml
+         └── DigitalObject_DMD.xml
    ├── bag-info.txt
    ├── bagit.txt
    ├── manifest-sha1.txt
@@ -43,7 +42,7 @@ at minimum, a file containing descriptive metadata, and a file containing techni
 
 ## 2.2 Metadata
 
-Descriptive and technical metadata must be included in the AIP. Other metadata files not specified here (such as
+Descriptive metadata must be included in the AIP. Other metadata files not specified here (such as
 platform-specific metadata exported directly from a repository) may be included if they would provide additional
 contextual information.
 
@@ -57,7 +56,8 @@ Examples of different levels of metadata completeness are:
 
 | Level         | Descriptive     | Technical    | Structural | Other     |
 | :---          |    :----:       |    :---:     | :---:      |  ---:     |
-| 1 (Minimum)   | DCMI Kernal/ERC | FITS         |       --   |    --     |
+| 0 (Minumum)   | DCMI Kernal/ERC | --           |       --   |    --     |
+| 1 (Acceptable)| DCMI Kernal/ERC | Some extracted technical data|       --   |    --     |
 | 2 (Acceptable)|  ERC plus non-standardized descriptive metadata    | FITS         | Platform-specific (e.g. node.json)|         |
 | 3 (Preferred) |  Dublin Core    | FITS         |   METS     |  e.g. Additional repository-specific or preservation metadata|
 
@@ -88,19 +88,21 @@ The descriptive metadata file is identified by the "_DMD" appended to the filena
 
 ### Technical
 
-Technical information should be represented by [FITS metadata](https://projects.iq.harvard.edu/fits/home).
+Technical metadata includes embedded information about the digital object, such as EXIF metadata for images or sample
+rates for audio.
 
-If, for some reason, the FITS tool cannot be used, technical information should be extracted from digital objects 
-based on their format (audio, video, image, text, etc.). For a list of possible technical metadata fields, see the 
+Technical information should be represented by [FITS metadata](https://projects.iq.harvard.edu/fits/home) when possible.
+
+If the FITS tool cannot be used, technical information can be extracted from digital objects based on their format 
+(audio, video, image, text, etc.). For a list of possible technical metadata elements, see the
 [FITS metadata documentation](https://projects.iq.harvard.edu/fits/fits-xml#metadata)
-
-The technical metadata file is identified by "_TMD" appended to the filename.
 
 ### Structural
 
 Information about parent-child, hierarchical relationships between objects as well as arrangement for ordered content
-must be captured when relevant, ideally following a recognized metadata standard such as METS. When referencing an
-external object, use its persistent identifier (i.e., ARK) rather than a system- specific identifier.
+should be captured when relevant. Ideally the structural information will follow a recognized metadata standard such as
+METS. When referencing an external object, use its persistent identifier (i.e., ARK) rather than a system- specific
+identifier.
 
 ## 2.3 Taxonomies
 
