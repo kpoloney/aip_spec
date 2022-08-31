@@ -19,8 +19,9 @@ The basic steps to create an AIP from an Islandora digital object are:
    3. Ensure the following plugins are listed: `['AddBasicTags', 'AddMedia', 'AddNodeJson', 'AddMediaJson',
       'AddFileFromTemplate', 'AddFile']`.
 3. The AIP creation steps are automated through the scripts in the [Create AIP](https://github.com/kpoloney/create_aip/) repository.
-   1. Either manually get a list of node IDs to create AIPs from, or use the `get_new_nodes` function
-      in [aiptools](https://github.com/kpoloney/create_aip/blob/main/aiptools.py).
+   1. Either manually get a list of node IDs to create AIPs from, or set the `get_nodes` argument to "True" in the 
+      Mint Islandora ARK script. This also requires that the `date` argument be filled with the search date in 
+      YYYYMMDD format.
    2. Mint ARKs for each object. Islandora ARKs are built using the SFU NAAN, public-facing shoulder, and the object's
       Drupal uuid. The ARK's ERC metadata is created from the object's node.json metadata. This step is automated in
       the [Mint Islandora ARK](https://github.com/kpoloney/create_aip/blob/main/mint_islandora_ark.py) script.
@@ -28,4 +29,4 @@ The basic steps to create an AIP from an Islandora digital object are:
       automated in the [Islandora to METS](https://github.com/kpoloney/create_aip/blob/main/islandora_METS.py) 
       script.
    4. Create a bag using Islandora Bagger. This step is automated using the [make_bag_islandora.py](https://github.com/kpoloney/create_aip/blob/main/make_bag_islandora.py) script.
-   
+   5. Validate the bag's structure and contents.

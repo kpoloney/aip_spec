@@ -23,9 +23,9 @@ The file directory will be as follows:
 ```
 aip-575835bd-15b2-4ee6-b5ba-66db8c492d92
    ├── data
-      └── DigitalObjectFilename
+      ├── ObjectFileName
       └── metadata
-         └── DigitalObject_DMD.xml
+         └── ObjectFileName_dmd.xml
    ├── bag-info.txt
    ├── bagit.txt
    ├── manifest-sha1.txt
@@ -70,8 +70,7 @@ therefore cannot be excluded.
 ### Descriptive
 
 [DCMI Kernal Metadata](https://www.dublincore.org/groups/kernel/spec/) should be included for minimum
-descriptive information. At its most basic, the descriptive metadata will consist of a text file containing the four 
-required Kernal elements:
+descriptive information. At its most basic, the descriptive metadata will consist of the four required Kernal elements:
 
 ```
 who: a responsible person or party (required)
@@ -80,11 +79,13 @@ when: a date important in the object's lifecycle (required)
 where: a location or system-oriented identifier (required)
 ```
 
+For locally stored objects, a yaml or text file containing the ERC elements must be stored alongside the object for an ARK to be minted. The file must be identified by following the naming convention: "ObjectFileName_erc.txt".
+
 More in-depth descriptive metadata may be included. Descriptive metadata should follow a standardized schema
 (preferably Dublin Core), but if it is not possible to do so, non-standardized metadata can be included as long as the
 Kernal metadata elements are also present in the AIP.
 
-The descriptive metadata file is identified by the "_DMD" appended to the filename.
+Descriptive metadata files other than the minimum ERC metadata are identified in the AIP bag by "_dmd" appended to the filename.
 
 ### Technical
 
@@ -95,12 +96,12 @@ Technical information should be represented by [FITS metadata](https://projects.
 
 If the FITS tool cannot be used, technical information can be extracted from digital objects based on their format 
 (audio, video, image, text, etc.). For a list of possible technical metadata elements, see the
-[FITS metadata documentation](https://projects.iq.harvard.edu/fits/fits-xml#metadata)
+[FITS metadata documentation.](https://projects.iq.harvard.edu/fits/fits-xml#metadata)
 
 ### Structural
 
 Information about parent-child, hierarchical relationships between objects as well as arrangement for ordered content
-should be captured when relevant. Ideally the structural information will follow a recognized metadata standard such as
+should be captured when relevant. Ideally, the structural information will follow a recognized metadata standard such as
 METS. When referencing an external object, use its persistent identifier (i.e., ARK) rather than a system- specific
 identifier.
 
@@ -122,6 +123,8 @@ ARKs will be minted and indexed using [larkm](https://github.com/mjordan/larkm).
 
 # 4. Workflow
 
+![workflow](workflow_diagram.png)
+
 The AIP will be created as soon as possible after an object has been deposited.
 
 1. Mint an ARK for each object using larkm. 
@@ -137,5 +140,5 @@ The AIP will be created as soon as possible after an object has been deposited.
 4. Verify that the `bag-info.txt` file includes a `BagIt-Profile-Identifier`. The `BagIt-Profile-Identifier` is the URI
    of the BagIt profile JSON file.
 
-For more detailed workflow steps, see the [Islandora Workflow](/islandora_workflow.md) and [Local Objects Workflow]
-(/local_workflow.md).
+For more detailed workflow steps, see the [Islandora Workflow](/islandora_workflow.md) and 
+[Local Objects Workflow](/local_workflow.md).
