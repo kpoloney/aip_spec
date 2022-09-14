@@ -40,12 +40,32 @@ BagOutputDir
         └── tagmanifest-sha1.txt
         
 ```
+## ERC Metadata
+
+The minimum ERC metadata elements must be included as either a .txt file or a YAML file. If using the automated ARK 
+minting script [mint_local_ark.py](https://github.com/kpoloney/create_aip/blob/main/mint_local_ARK.py), the metadata 
+must be formatted correctly in order to be parsed. The required elements (who, what, when) must be included. For a text 
+file, elements must be listed one per line:
+```
+who: Lastname, Person
+what: A dataset for a thesis paper
+when: 2005-05-06
+```
+
+YAML files should contain the required elements as key/value pairs, using quotes around the values if special 
+characters are used. If there are multiple creators, format the value as a list.
+```yaml
+who: ['Lastname, Firstname', 'SecondAuthor, Name']
+what: 'A Research Paper: with a Subtitle'
+when: '2020-04-05'
+```
+
 
 ## Steps
 1. Create the ERC metadata for each object. This must be done before minting an ARK, and follow the naming convention: 'ObjectFileName_erc.yml.' 
     1. This can be saved as either a YAML file or a TXT file with each element on a new line.
 2. Mint an ARK for each object. Ensure that the ARK's ERC "where" field is the object's location on the local drive.
-   1. This step is automated in the mint_local_ark script in the aip tools.
+   1. This step is automated in the [mint_local_ark.py](https://github.com/kpoloney/create_aip/blob/main/mint_local_ARK.py) script in the aip tools.
 3. Create a bag for each object, using its ARK identifier as the bag folder name.
    1. This step is automated in the [local objects script](https://github.com/kpoloney/create_aip/blob/main/local_objects.py) in the aip creation tools.
 4. Validate the contents and structure of the bag.
