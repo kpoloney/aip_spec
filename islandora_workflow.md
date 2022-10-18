@@ -17,7 +17,7 @@ The basic steps to create an AIP from an Islandora digital object are:
    1. Set `bag_name` to `uuid`.
    2. `bag-info` must contain all fields marked as required in the [SFU Bag Profile](https://github.com/kpoloney/create_aip/blob/main/sfu-bagit-profile.json).
    3. Ensure the following plugins are listed: `['AddBasicTags', 'AddMedia', 'AddNodeJson', 'AddMediaJson',
-      'AddFileFromTemplate', 'AddFile']`.
+   'AddFileFromTemplate']`.
 3. The AIP creation steps are automated through the scripts in the [Create AIP](https://github.com/kpoloney/create_aip/) repository.
    1. Either manually get a list of node IDs to create AIPs from, or set the `get_nodes` argument to "True" in the 
       Mint Islandora ARK script. This also requires that the `date` argument be filled with the search date in 
@@ -27,6 +27,9 @@ The basic steps to create an AIP from an Islandora digital object are:
       the [Mint Islandora ARK](https://github.com/kpoloney/create_aip/blob/main/mint_islandora_ark.py) script.
    3. Create a METS file for each object showing its hierarchical relationships and related objects. This is 
       automated in the [Islandora to METS](https://github.com/kpoloney/create_aip/blob/main/islandora_METS.py) 
-      script.
+      script. 
+      1. If a METS file is created, the Islandora Bagger plugin `AddFiles` should be added to include it in the bag. 
+         It is automatically added in the `make_bag_islandora.py` script if the configuration file has a valid 
+         directory for the `mets_dir` value.
    4. Create a bag using Islandora Bagger. This step is automated using the [make_bag_islandora.py](https://github.com/kpoloney/create_aip/blob/main/make_bag_islandora.py) script.
    5. Validate the bag's structure and contents.
