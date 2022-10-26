@@ -2,8 +2,6 @@
 
 This document is a draft specification for SFU Library's Archival Information Packages (AIPs).
 
-Ongoing planning, issues, and other considerations are in [Planning notes](/planning_notes.md).
-
 # 1. Introduction
 
 The purpose of the AIP specification is to define what components and metadata are necessary and practical for long-term
@@ -25,14 +23,17 @@ aip-575835bd-15b2-4ee6-b5ba-66db8c492d92
    ├── data
       ├── ObjectFileName
       └── metadata
-         └── ObjectFileName_dmd.xml
+         ├── ObjectFileName_erc.yml
+         └── ObjectFileName_dmd.xml        
    ├── bag-info.txt
    ├── bagit.txt
-   ├── manifest-sha1.txt
-   └── tagmanifest-sha1.txt
+   ├── manifest-sha256.txt
+   └── tagmanifest-sha256.txt
 ```
 The name of the bag is `aip-` followed by the ARK identifier of the object (excluding shoulder). For Islandora objects, the identifier will be the same as the object's Drupal UUID.
 The bag-info.txt, bagit.txt, and manifest files will be generated automatically when using bag generator tools.
+
+Multiple manifest files may be included using different checksum algorithms. Allowed algorithms are listed in the BagIt Profile.
 
 The `bag-info.txt` file must include the `BagIt-Profile-Identifier` tag in order for it to be validated.
 
@@ -46,10 +47,10 @@ Descriptive metadata must be included in the AIP. Other metadata files not speci
 platform-specific metadata exported directly from a repository) may be included if they would provide additional
 contextual information.
 
-Metadata files should be saved as either a plain text file (.txt) or an XML file.
+Metadata files should be saved as a plain text file (.txt), YAML, or an XML file.
 
 Metadata files that are not part of the original object (e.g., files created automatically on transfer or by a librarian
-as opposed to a README file connected to a research dataset) should be saved in the "metadata" subfolder within the data
+as opposed to a README file connected to a research dataset) should be saved in a "metadata" subfolder within the data
 directory.
 
 Examples of different levels of metadata completeness are:
@@ -59,9 +60,9 @@ Examples of different levels of metadata completeness are:
 | 0 (Minumum)   | DCMI Kernal/ERC | --           |       --   |    --     |
 | 1 (Acceptable)| DCMI Kernal/ERC | Some extracted technical data|       --   |    --     |
 | 2 (Acceptable)|  ERC plus non-standardized descriptive metadata    | FITS         | Platform-specific (e.g. node.json)|         |
-| 3 (Preferred) |  Dublin Core    | FITS         |   METS     |  e.g. Additional repository-specific or preservation metadata|
+| 3 (Preferred) |  ERC plus Dublin Core    | FITS         |   METS     |  e.g. Additional repository-specific or preservation metadata|
 
-The preferred level includes as much metadata as necessary to understand the object, its context of creation, related
+The preferred level includes as much metadata as is necessary to understand the object, its context of creation, related
 objects, and its technical requirements. While not required, additional metadata may be included if it would provide
 information that may be relevant to the object's preservation. If it is not possible to include more detailed
 metadata, the minimum level is still compliant with this specification. ERC metadata is required to mint an ARK, and 
@@ -138,7 +139,7 @@ The AIP will be created as soon as possible after an object has been deposited.
     * Islandora Bagger can generate FITS and Dublin Core metadata files if specified in the configuration.
 3. Confirm the Bag contains the expected contents and structure detailed in [2. AIP Contents](#2-aip-contents).
 4. Verify that the `bag-info.txt` file includes a `BagIt-Profile-Identifier`. The `BagIt-Profile-Identifier` is the URI
-   of the BagIt profile JSON file.
+   of the BagIt profile JSON file. Validate the `bag-info` file against the SFU BagIt Profile.
 
 For more detailed workflow steps, see the [Islandora Workflow](/islandora_workflow.md) and 
 [Local Objects Workflow](/local_workflow.md).
