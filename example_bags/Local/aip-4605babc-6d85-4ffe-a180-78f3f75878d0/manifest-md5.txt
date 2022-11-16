@@ -1,0 +1,2 @@
+fae56d60d61626b4414eda361e5a8ddc  data/bisbee.JPG
+49f0af7670d63b27de606c4059e07571  data/metadata/bisbee_erc.txt

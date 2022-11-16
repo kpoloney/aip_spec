@@ -1,0 +1,22 @@
+<mets:mets xmlns:mets="http://www.loc.gov/METS/" xmlns:xlink="http://www.w3.org/1999/xlink" LABEL="RAD Past, Present, Future">
+	<mets:fileSec>
+		<mets:fileGrp USE="https://schema.org/DigitalDocument">
+			<mets:file ID="uuid_96b6c238-022e-41fd-b108-389111ec7b88">
+				<mets:FLocat xlink:href="ark:99999/s196b6c238-022e-41fd-b108-389111ec7b88" LOCTYPE="ARK" />
+			</mets:file>
+		</mets:fileGrp>
+		<mets:fileGrp USE="http://purl.org/dc/dcmitype/Collection">
+			<mets:file ID="uuid_319ac752-2c54-42ed-9193-72d5119e31a4">
+				<mets:FLocat xlink:href="ark:99999/s1319ac752-2c54-42ed-9193-72d5119e31a4" LOCTYPE="ARK" />
+			</mets:file>
+		</mets:fileGrp>
+	</mets:fileSec>
+	<mets:structMap TYPE="logical">
+		<mets:div>
+			<mets:fptr FILEID="uuid_96b6c238-022e-41fd-b108-389111ec7b88" />
+			<mets:div TYPE="http://purl.org/dc/terms/isPartOf">
+				<mets:fptr FILEID="uuid_319ac752-2c54-42ed-9193-72d5119e31a4" />
+			</mets:div>
+		</mets:div>
+	</mets:structMap>
+</mets:mets>

@@ -1,0 +1,4 @@
+who: Kelsey
+what: Photograph from Bisbee, Arizona
+when: 2013
+where: D:\LocalDriveExample\ImageFolderName\bisbee.JPG

@@ -1,0 +1,12 @@
+Bag-Size: 422.11 KB
+Bag-Software-Agent: bagit.py v1.8.1 <https://github.com/LibraryOfCongress/bagit-python>
+BagIt-Profile-Identifier: 
+Bagging-Date: 2022-10-25
+Contact-Email: libhelp@sfu.ca
+External-Description: RAD Past, Present, Future
+External-Identifier: ark:99999/s196b6c238-022e-41fd-b108-389111ec7b88
+Internal-Sender-Identifier: https://summit.sfu.ca/node/17636
+Organization-Address: 8888 University Dr, Burnaby, BC V5A 1S6
+Payload-Oxum: 433220.4
+Source-Organization: Simon Fraser University
+Source-Repository: Summit Research Repository

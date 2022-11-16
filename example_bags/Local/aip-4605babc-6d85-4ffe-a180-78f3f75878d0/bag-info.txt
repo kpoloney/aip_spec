@@ -1,0 +1,12 @@
+Bag-Count: 1 of 4
+Bag-Group-Identifier: ImageFolderName
+Bag-Size: 2.28 MB
+Bag-Software-Agent: bagit.py v1.8.1 <https://github.com/LibraryOfCongress/bagit-python>
+BagIt-Profile-Identifier: ark/to/BagItProfile
+Bagging-Date: 2022-10-12
+Contact-Email: libhelp@sfu.ca
+External-Identifier: ark:99999/s14605babc-6d85-4ffe-a180-78f3f75878d0
+Internal-Sender-Identifier: D:\LocalDriveExample\ImageFolderName\bisbee.JPG
+Organization-Address: 8888 University Dr, Burnaby, BC V5A 1S6
+Payload-Oxum: 2388842.2
+Source-Organization: Simon Fraser University

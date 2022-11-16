@@ -1,0 +1,50 @@
+<mets:mets xmlns:mets="http://www.loc.gov/METS/" xmlns:xlink="http://www.w3.org/1999/xlink" LABEL="Dramatic Growth of Open Access March 31, 2013">
+	<mets:fileSec>
+		<mets:fileGrp USE="http://purl.org/coar/resource_type/c_1843">
+			<mets:file ID="uuid_68c5bfa7-de02-4b04-9445-285eb619ff86">
+				<mets:FLocat xlink:href="ark:99999/s168c5bfa7-de02-4b04-9445-285eb619ff86" LOCTYPE="ARK" />
+			</mets:file>
+			<mets:file ID="uuid_5e1979bf-2b53-499a-9027-0ff1a3a9546f">
+				<mets:FLocat xlink:href="ark:99999/s15e1979bf-2b53-499a-9027-0ff1a3a9546f" LOCTYPE="ARK" />
+			</mets:file>
+			<mets:file ID="uuid_a659fa96-fd4f-4f68-ae6e-6eddd68baa55">
+				<mets:FLocat xlink:href="ark:99999/s1a659fa96-fd4f-4f68-ae6e-6eddd68baa55" LOCTYPE="ARK" />
+			</mets:file>
+			<mets:file ID="uuid_a9aa2f7b-20fb-4cab-af1f-36497e1bbf6a">
+				<mets:FLocat xlink:href="ark:99999/s1a9aa2f7b-20fb-4cab-af1f-36497e1bbf6a" LOCTYPE="ARK" />
+			</mets:file>
+		</mets:fileGrp>
+		<mets:fileGrp USE="http://purl.org/coar/resource_type/c_c513">
+			<mets:file ID="uuid_8dd1b727-c86d-4fb9-9cb4-fe8f19aa7d75">
+				<mets:FLocat xlink:href="ark:99999/s18dd1b727-c86d-4fb9-9cb4-fe8f19aa7d75" LOCTYPE="ARK" />
+			</mets:file>
+			<mets:file ID="uuid_a098c9e1-8308-4061-9c57-8ea95f2f9191">
+				<mets:FLocat xlink:href="ark:99999/s1a098c9e1-8308-4061-9c57-8ea95f2f9191" LOCTYPE="ARK" />
+			</mets:file>
+		</mets:fileGrp>
+		<mets:fileGrp USE="http://purl.org/dc/dcmitype/Collection">
+			<mets:file ID="uuid_330eced9-3c7c-4c52-80d2-56bbb45c4987">
+				<mets:FLocat xlink:href="ark:99999/s1330eced9-3c7c-4c52-80d2-56bbb45c4987" LOCTYPE="ARK" />
+			</mets:file>
+			<mets:file ID="uuid_d8bee717-7f57-4835-8b3e-3a53d188132a">
+				<mets:FLocat xlink:href="ark:99999/s1d8bee717-7f57-4835-8b3e-3a53d188132a" LOCTYPE="ARK" />
+			</mets:file>
+		</mets:fileGrp>
+	</mets:fileSec>
+	<mets:structMap TYPE="logical">
+		<mets:div>
+			<mets:fptr FILEID="uuid_68c5bfa7-de02-4b04-9445-285eb619ff86" />
+			<mets:div TYPE="http://purl.org/dc/terms/hasPart">
+				<mets:fptr FILEID="uuid_5e1979bf-2b53-499a-9027-0ff1a3a9546f" />
+				<mets:fptr FILEID="uuid_a659fa96-fd4f-4f68-ae6e-6eddd68baa55" />
+				<mets:fptr FILEID="uuid_8dd1b727-c86d-4fb9-9cb4-fe8f19aa7d75" />
+				<mets:fptr FILEID="uuid_a098c9e1-8308-4061-9c57-8ea95f2f9191" />
+				<mets:fptr FILEID="uuid_a9aa2f7b-20fb-4cab-af1f-36497e1bbf6a" />
+			</mets:div>
+			<mets:div TYPE="http://purl.org/dc/terms/isPartOf">
+				<mets:fptr FILEID="uuid_330eced9-3c7c-4c52-80d2-56bbb45c4987" />
+				<mets:fptr FILEID="uuid_d8bee717-7f57-4835-8b3e-3a53d188132a" />
+			</mets:div>
+		</mets:div>
+	</mets:structMap>
+</mets:mets>

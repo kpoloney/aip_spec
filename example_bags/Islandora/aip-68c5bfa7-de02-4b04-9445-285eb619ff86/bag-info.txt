@@ -1,0 +1,12 @@
+Bag-Size: 213.25 KB
+Bag-Software-Agent: bagit.py v1.8.1 <https://github.com/LibraryOfCongress/bagit-python>
+BagIt-Profile-Identifier: 
+Bagging-Date: 2022-11-01
+Contact-Email: libhelp@sfu.ca
+External-Description: Dramatic Growth of Open Access March 31, 2013
+External-Identifier: ark:99999/s168c5bfa7-de02-4b04-9445-285eb619ff86
+Internal-Sender-Identifier: https://summit.sfu.ca/node/12645
+Organization-Address: 8888 University Dr, Burnaby, BC V5A 1S6
+Payload-Oxum: 223743.5
+Source-Organization: Simon Fraser University
+Source-Repository: Summit Research Repository

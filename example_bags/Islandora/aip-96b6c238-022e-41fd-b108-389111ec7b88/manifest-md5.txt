@@ -1,0 +1,4 @@
+e33a7e493804538a9f6254cd38ab8264  data/DancyR_RAD_2012.pdf
+3d1bd690eaa4ec2adbd4ed16a3793bc8  data/metadata/17636_mets.xml
+deadb60947d6a500854a3ed2790d8a72  data/metadata/DancyR_RAD_2012_erc.yml
+09917f0ff1779513b7bc59ddb01bda9e  data/metadata/DancyR_RAD_2012_node.json

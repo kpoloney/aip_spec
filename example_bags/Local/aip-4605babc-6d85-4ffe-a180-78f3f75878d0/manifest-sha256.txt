@@ -1,0 +1,2 @@
+df3120c64890b71f3a0d2a743c20cab34727cfe129466e5bcdc5745aa942e9bb  data/bisbee.JPG
+b3d8b2e7120609f14392b8332a8569e1d87a4526f40a9269b3909c6dae134ca4  data/metadata/bisbee_erc.txt
