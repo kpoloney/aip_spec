@@ -8,5 +8,5 @@ Contact-Email: libhelp@sfu.ca
 External-Identifier: ark:99999/s14605babc-6d85-4ffe-a180-78f3f75878d0
 Internal-Sender-Identifier: D:\LocalDriveExample\ImageFolderName\bisbee.JPG
 Organization-Address: 8888 University Dr, Burnaby, BC V5A 1S6
-Payload-Oxum: 2388842.2
+Payload-Oxum: 2388848.2
 Source-Organization: Simon Fraser University

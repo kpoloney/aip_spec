@@ -1,5 +1,5 @@
 eab1930202e58023558ae06c374416ab  data/20130331fulldata.xls
 2eba708a61b1470b8a2b6a52171d62ec  data/metadata/12645_dmd.xml
 068e241c0a0f2f11c00126cc48da0541  data/metadata/12645_mets.xml
-125b633a0245258d0aad80682def52d4  data/metadata/20130331fulldata_erc.yml
+33ea8b6cfc430af8769d62d0c4649b70  data/metadata/20130331fulldata_erc.yml
 42ff15d16c100c4ae893cb9b80b79f0e  data/metadata/20130331fulldata_node.json

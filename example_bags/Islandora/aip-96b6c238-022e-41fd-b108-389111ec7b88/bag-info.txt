@@ -7,6 +7,7 @@ External-Description: RAD Past, Present, Future
 External-Identifier: ark:99999/s196b6c238-022e-41fd-b108-389111ec7b88
 Internal-Sender-Identifier: https://summit.sfu.ca/node/17636
 Organization-Address: 8888 University Dr, Burnaby, BC V5A 1S6
-Payload-Oxum: 433220.4
+Payload-Oxum: 433226.4
 Source-Organization: Simon Fraser University
 Source-Repository: Summit Research Repository
+Source-System: Islandora
