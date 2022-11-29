@@ -1,4 +1,3 @@
-Bag-Count: 2 of 1
 Bag-Size: 852.9 MB
 Bag-Software-Agent: bagit.py v1.8.1 <https://github.com/LibraryOfCongress/bagit-python>
 Bagging-Date: 2022-11-29
