@@ -1,0 +1,13 @@
+Bag-Count: 2 of 1
+Bag-Size: 852.9 MB
+Bag-Software-Agent: bagit.py v1.8.1 <https://github.com/LibraryOfCongress/bagit-python>
+Bagging-Date: 2022-11-29
+Contact-Email: libhelp@sfu.ca
+External-Description: [Occupy Vancouver photographs and videos]
+External-Identifier: ark:99999/s1225140d8-d188-4479-b72f-1cac2fd8e1ad
+Internal-Sender-Identifier: C:\LocalStorage\OccupyVancouver\MsC-146 Occupy Vancouver Born-Digital Records
+Organization-Address: 8888 University Dr, Burnaby, BC V5A 1S6
+Payload-Oxum: 894333344.70
+Source-Organization: Simon Fraser University
+Source-Repository: Special Collections and Rare Books
+Validation-Date: 2022-11-29
