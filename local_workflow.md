@@ -110,7 +110,22 @@ Required input for the script includes:
     
 The script does not output a file, but will add the object's information to larkm and assign an ARK.
 
-### 3. Create AIP bag
+### 3. Scan for viruses
+
+Scan the object files for any viruses. If using ClamAV, save the output text file in the metadata subfolder. If 
+using the automation scripts, this step can be completed during the [validation step](#5-validate-aip) by using the 
+`--clamav` argument.
+
+If any infected files are found, determine if the virus(es) can be safely or reasonably removed. Otherwise, keep the 
+files as they are but retain a note in the metadata subfolder indicating which files are infected. If the scan 
+software creates an automated report (as with ClamAV), that will suffice as documentation.
+
+Include the following tags in the Bag Info file for the AIP when creating the bag:
+- `Virus-Scan-Date` The data in YYYY-MM-DD format on which the objects were scanned
+- `Virus-Scan-Software` The name of the software used to scan the object
+- `Virus-Scan-Software-Version` The version number of software used
+
+### 4. Create AIP bag
 
 Create a bag conforming to the Library of Congress BagIt specification. The bag will contain the digital object and any metadata associated with it. The metadata will be stored in a subdirectory within the bag's `data` directory. The bag's name should be in the format `aip-uuid` where the uuid is the ARK identifier of the object. 
 
@@ -124,7 +139,7 @@ The automation script has the following required input:
 
 The script will output a bag for each object in the directory as long as the object has an ARK indexed in larkm.
 
-### 4. Validate AIP
+### 5. Validate AIP
 
 Confirm that a Bag is valid according to this specification. This includes validating that:
 * The bag conforms to the BagIt specification

@@ -106,6 +106,12 @@ should be captured when relevant. Ideally, the structural information will follo
 METS. When referencing an external object, use its persistent identifier (i.e., ARK) rather than a system- specific
 identifier.
 
+### Virus log
+
+If using a virus scanner with a log output, include the log in the AIP's metadata subfolder. If the software used 
+does not automatically create a log and infected files are found, include a text file indicating details about which 
+files were infected and whether steps were taken to remove the virus.
+
 ## 2.3 Taxonomies
 
 Do not leave platform-specific taxonomy identifiers in the metadata without either translating them into terms or
@@ -132,13 +138,10 @@ The AIP will be created as soon as possible after an object has been deposited.
    * For Islandora repositories, use the Drupal UUID as the ARK identifier.
    * Specify the appropriate ARK shoulder for the object's storage location and retention period.
    * Include as many of the ERC metadata fields as possible.
-2. The AIP creator will create a Bag from the digital object. This can either be created from the repository
-   (i.e., with [Islandora bagger](https://github.com/mjordan/islandora_bagger)) or created from the object itself using
-   a tool such as [Bagger](https://github.com/LibraryOfCongress/bagger)
-   or [SFU Moveit](https://github.com/axfelix/moveit-electron).
-    * Islandora Bagger can generate FITS and Dublin Core metadata files if specified in the configuration.
-3. Confirm the Bag contains the expected contents and structure detailed in [2. AIP Contents](#2-aip-contents).
-4. Verify that the `bag-info.txt` file includes a `BagIt-Profile-Identifier`. The `BagIt-Profile-Identifier` is the URI
+2. Complete a virus scan on the object. Retain the scan log as part of the object's metadata.
+3. Create a Bag from the digital object including both the object itself and its relevant metadata.
+4. Confirm the Bag contains the expected contents and structure detailed in [2. AIP Contents](#2-aip-contents).
+5. Verify that the `bag-info.txt` file includes a `BagIt-Profile-Identifier`. The `BagIt-Profile-Identifier` is the URI
    of the BagIt profile JSON file. Validate the `bag-info` file against the SFU BagIt Profile.
 
 For more detailed workflow steps, see the [Islandora Workflow](/islandora_workflow.md) and 
